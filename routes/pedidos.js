@@ -9,7 +9,8 @@ const obtener_pedidos = async () => {
 						c.num_cotizacion,
 						c.num_doc_cl
 					from pedido p, cotizacion c
-					where p.num_pedido = c.num_pedido`
+					where p.num_pedido = c.num_pedido
+					order by p.num_pedido desc`
 	const result = await DB.Open(query, [], false)
 
 	result.rows.map(e => {

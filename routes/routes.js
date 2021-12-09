@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const DB = require('../config/config')
 
+router.use(require('./analisis'))
 router.use(require('./articulos_buscar'))
 router.use(require('./articulos'))
 router.use(require('./clientes_buscar'))

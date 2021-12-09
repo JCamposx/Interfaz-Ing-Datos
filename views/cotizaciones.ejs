@@ -46,7 +46,6 @@
 					<tr>
 						<th scope="col">ID</th>
 						<th scope="col">Nro doc cliente</th>
-						<th scope="col">Nro version</th>
 						<th scope="col">Descripción</th>
 						<th scope="col">Fecha de emision</th>
 						<th scope="col">Fecha de vencimiento</th>
@@ -64,7 +63,6 @@
 						<tr class="align-middle">
 							<td><%= cotizacion.id_cot %></td>
 							<td><%= cotizacion.num_doc %></td>
-							<td><%= cotizacion.num_version %></td>
 							<td><%= cotizacion.descripcion %></td>
 							<td><%= cotizacion.fecha_emision.toISOString().substring(0,10) %></td>
 							<td><%= cotizacion.fecha_vencimiento.toISOString().substring(0,10) %></td>
@@ -87,13 +85,7 @@
 								<td>US$ <%= cotizacion.monto_final %></td>
 							<% } %>
 							<td><a href="/cotizaciones/ver-editar/<%= cotizacion.id_cot %>" class="btn btn-sm btn-outline-dark">Ver/Editar</a></td>
-							<td>
-								<% if (cotizacion.num_pedido == null) { %>
-									<a href="/cotizaciones/<%= cotizacion.id_cot %>/crear-pedido/<%= cotizacion.monto_final %>" class="btn btn-sm btn-outline-primary">Generar pedido</a>
-								<% } else { %>
-									<a href="/cotizaciones/<%= cotizacion.id_cot %>/crear-pedido" class="btn btn-sm btn-outline-primary disabled">Generar pedido</a>
-								<% } %>
-							</td>
+							<td><a href="/cotizaciones/<%= cotizacion.id_cot %>/crear-pedido/<%= cotizacion.monto_final %>" class="btn btn-sm btn-outline-primary">Generar pedido</a></td>
 						</tr>
 					<% }) %>
 				</tbody>

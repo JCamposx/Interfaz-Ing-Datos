@@ -39,7 +39,7 @@
 							<label class="form-label">Tipo cliente</label>
 
 							<select name="tipo_cli" id="tipo_cli" class="form-select">
-								<% if (cliente.tipo_cliente == 1) { %>
+								<% if (cliente.tipo_cliente == 2) { %>
 									<option value=1 selected>Persona natural</option>
 									<option value=2>Persona juridica</option>
 								<% } else { %>
@@ -49,7 +49,7 @@
 							</select>
 						</div>
 						
-						<% if (cliente.tipo_cliente == 1) { %>
+						<% if (cliente.tipo_cliente == 2) { %>
 							<div class="col" id="nombre">
 								<label class="form-label">Nombre</label>
 								<input name="nombre" value="<%= cliente.nombre %>" type="text" class="form-control" placeholder="Nombre"/>
