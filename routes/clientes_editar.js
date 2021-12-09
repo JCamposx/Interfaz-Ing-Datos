@@ -123,7 +123,7 @@ router.post('/clientes/editar/:nro_doc', async (req, res) => {
 	}
 	else {
 		let query = ''
-		if (tipo_cli == 1) {
+		if (tipo_cli == 2) {
 			query = `update cliente
 					 set
 						tipodoc_cl = ${tipo_doc},

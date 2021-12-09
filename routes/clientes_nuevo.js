@@ -86,7 +86,7 @@ router.post('/clientes/nuevo', async (req, res) => {
 		})
 	} else {
 		let query = ''
-		if (tipo_cli == 1) {
+		if (tipo_cli == 2) {
 			query = `insert into cliente
 					   values (
 						${tipo_doc}, '${num_doc}', ${tipo_cli}, upper('${nombre}'), upper('${apellido}'), null, upper('${correo}'), upper('${direccion}'), ${telefono}, ${id_ase}
