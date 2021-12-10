@@ -93,4 +93,53 @@ router.post('/crear-nuevo-pedido', async (req, res) => {
 	res.redirect('/pedidos')
 })
 
+////////////////////////////////////////////////////////////////////////
+
+const obtener_pedidos_por_nro = async (busqueda) => {
+	const pedidos = []
+	const query = `select
+						p.*,
+						c.num_cotizacion,
+						c.num_doc_cl
+					from pedido p, cotizacion c
+					where p.num_pedido = c.num_pedido and p.num_pedido like '${busqueda}%'
+					order by p.num_pedido desc`
+	const result = await DB.Open(query, [], false)
+
+	result.rows.map(e => {
+		const user_schema = {
+			num_pedido: e[0],
+			fecha_emi: e[1],
+			fecha_ven: e[2],
+			total: e[3],
+			estado: e[4],
+			id_ven: e[5],
+			num_cot: e[6],
+			num_doc: e[7]
+		}
+		pedidos.push(user_schema)
+	})
+
+	return pedidos
+}
+
+router.post('/pedidos/buscar', async (req, res) => {
+	const busqueda = req.body.busqueda
+
+	if (busqueda == '') {
+		res.redirect('/pedidos')
+	} else {
+		res.redirect(`/pedidos/buscar/${busqueda}`)
+	}
+})
+
+router.get('/pedidos/buscar/:num_pedido_buscar', async (req, res) => {
+	const busqueda = req.params.num_pedido_buscar
+	const pedidos = await obtener_pedidos_por_nro(busqueda)
+
+	res.render('pedidos', {
+		pedidos: pedidos
+	})
+})
+
 module.exports = router

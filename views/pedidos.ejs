@@ -18,8 +18,26 @@
 		<!-- Contenido -->
 		<div class="container mt-2 mb-3">
 			<div class="row">
-				<div class="col-11">
+				<div class="col-4">
 					<h1>Pedidos</h1>
+				</div>
+
+				<div class="col-3 align-self-center">
+					<a class="btn btn-outline-dark" href="/pedidos">Mostrar todo</a>
+				</div>
+
+				<div class="col align-self-center">
+					<form method="post" action="/pedidos/buscar">
+						<div class="row">
+							<div class="col-10">
+								<input name="busqueda" type="text" class="form-control" placeholder="Buscar por nro de pedido"/>
+							</div>
+							
+							<div class="col-2">
+								<button type="submit" class="btn btn-outline-success">Buscar</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 
