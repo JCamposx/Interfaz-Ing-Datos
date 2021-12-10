@@ -23,7 +23,7 @@
 				<h1>Análisis</h1>
 			</div>
 
-			<div class="row">
+			<div class="row mb-4">
 				<div class="col-sm-6">
 					<div class="card">
 						<div class="card-body">
@@ -43,6 +43,19 @@
 							<input type="hidden" id="p_nat" value="<%= p_nat %>">
 							<canvas id="clientextipo" width="600" height="400"></canvas>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row mb-4">
+				<div class="card">
+					<div class="card-body">
+						<h3>Clientes atendidos por asesor</h3>
+						<input type="hidden" id="total_ase" value="<%= asesores.total %>">
+						<% asesores.forEach(asesor => { %>
+							<input type="hidden" id="ase_<%= asesor.id_ase %>" value="<%= asesor.cant_clientes %>">
+						<% }) %>
+						<canvas id="cliente_asesor" width="600" height="400"></canvas>
 					</div>
 				</div>
 			</div>
