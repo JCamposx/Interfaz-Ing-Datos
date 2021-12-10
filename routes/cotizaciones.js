@@ -51,11 +51,10 @@ const obtener_cotizaciones_por_id = async (busqueda) => {
 	const query = `select distinct
 						c.*,
 						cl.id_a,
-						ca.num_version,
 						s.nombre_s,
 						cal_monto_total(c.num_cotizacion)
-					from cotizacion c, sucursal s, cot_art ca, cliente cl
-					where c.id_s = s.id_s and c.num_doc_cl = cl.num_doc_cl and ca.num_version is not null and c.num_cotizacion like '${busqueda}%'
+					from cotizacion c, sucursal s, cliente cl
+					where c.id_s = s.id_s and c.num_doc_cl = cl.num_doc_cl and num_cotizacion like '${busqueda}%'
 					order by c.Num_cotizacion desc`
 						
 	const result = await DB.Open(query, [], false)
